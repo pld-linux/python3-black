@@ -6,37 +6,47 @@
 Summary:	The uncompromising code formatter
 Summary(pl.UTF-8):	Bezkompromisowe narzędzie do formatowania kodu
 Name:		python3-black
-Version:	20.8b1
+Version:	21.6b0
 Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/black/
 Source0:	https://files.pythonhosted.org/packages/source/b/black/black-%{version}.tar.gz
-# Source0-md5:	d2ea4865c1336bf3d986eb2da322c8ad
+# Source0-md5:	975b3d794b25478ef4d63f667f37b396
 URL:		https://pypi.org/project/black/
 BuildRequires:	python3-modules >= 1:3.6
 BuildRequires:	python3-setuptools
 %if %{with tests}
-BuildRequires:	python3-aiohttp
-BuildRequires:	python3-aiohttp_cors
+BuildRequires:	python3-aiohttp >= 3.6.0
+BuildRequires:	python3-aiohttp_cors >= 0.4.0
 BuildRequires:	python3-appdirs
 BuildRequires:	python3-click >= 7.1.2
 %if "%{py3_ver}" < "3.7"
 BuildRequires:	python3-dataclasses >= 0.6
 %endif
 BuildRequires:	python3-mypy_extensions >= 0.4.3
-BuildRequires:	python3-pathspec >= 0.6
+BuildRequires:	python3-parameterized >= 0.7.4
+BuildRequires:	python3-pathspec >= 0.8.1
+BuildRequires:	python3-pathspec < 1
+BuildRequires:	python3-pytest >= 6.1.1
+#BuildRequires:	python3-pytest-cases >= 2.3.0
+#BuildRequires:	python3-pytest-cov >= 2.11.1
+BuildRequires:	python3-pytest-mock >= 3.3.1
+#BuildRequires:	python3-pytest-xdist >= 2.2.1
 BuildRequires:	python3-regex >= 2020.1.8
 BuildRequires:	python3-toml >= 0.10.1
-BuildRequires:	python3-typed_ast >= 1.4.0
-BuildRequires:	python3-typing_extensions >= 0.7.4
+BuildRequires:	python3-typed_ast >= 1.4.2
+%if "%{py3_ver}" < "3.8"
+BuildRequires:	python3-typing_extensions >= 3.7.4
+%endif
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with doc}
-BuildRequires:	python3-pygments >= 2.6.1
-BuildRequires:	python3-recommonmark >= 0.6.0
-BuildRequires:	sphinx-pdg-3 >= 3.2.1
+BuildRequires:	python3-myst_parser >= 0.14.0
+BuildRequires:	python3-sphinx_copybutton >= 0.3.1
+BuildRequires:	python3-sphinxcontrib-programoutput >= 0.17
+BuildRequires:	sphinx-pdg-3 >= 3.5.4
 %endif
 Requires:	python3-modules >= 1:3.6
 BuildArch:	noarch
@@ -119,5 +129,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with doc}
 %files apidocs
 %defattr(644,root,root,755)
-%doc docs/_build/html/{_static,reference,*.html,*.js}
+%doc docs/_build/html/{_static,contributing,guides,integrations,the_black_code_style,usage_and_configuration,*.html,*.js}
 %endif
