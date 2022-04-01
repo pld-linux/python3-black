@@ -7,7 +7,7 @@ Summary:	The uncompromising code formatter
 Summary(pl.UTF-8):	Bezkompromisowe narzędzie do formatowania kodu
 Name:		python3-black
 Version:	21.6b0
-Release:	3
+Release:	4
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/black/
