@@ -21,9 +21,6 @@ BuildRequires:	python3-aiohttp >= 3.6.0
 BuildRequires:	python3-aiohttp_cors >= 0.4.0
 BuildRequires:	python3-appdirs
 BuildRequires:	python3-click >= 7.1.2
-%if "%{py3_ver}" < "3.7"
-BuildRequires:	python3-dataclasses >= 0.6
-%endif
 BuildRequires:	python3-mypy_extensions >= 0.4.3
 BuildRequires:	python3-parameterized >= 0.7.4
 BuildRequires:	python3-pathspec >= 0.8.1
@@ -36,9 +33,6 @@ BuildRequires:	python3-pytest-mock >= 3.3.1
 BuildRequires:	python3-regex >= 2020.1.8
 BuildRequires:	python3-toml >= 0.10.1
 BuildRequires:	python3-typed_ast >= 1.4.2
-%if "%{py3_ver}" < "3.8"
-BuildRequires:	python3-typing_extensions >= 3.7.4
-%endif
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
