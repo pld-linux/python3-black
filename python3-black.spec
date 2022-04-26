@@ -14,7 +14,7 @@ Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/b/black/black-%{version}.tar.gz
 # Source0-md5:	975b3d794b25478ef4d63f667f37b396
 URL:		https://pypi.org/project/black/
-BuildRequires:	python3-modules >= 1:3.6
+BuildRequires:	python3-modules >= 1:3.8
 BuildRequires:	python3-setuptools
 %if %{with tests}
 BuildRequires:	python3-aiohttp >= 3.6.0
@@ -42,7 +42,7 @@ BuildRequires:	python3-sphinx_copybutton >= 0.3.1
 BuildRequires:	python3-sphinxcontrib-programoutput >= 0.17
 BuildRequires:	sphinx-pdg-3 >= 3.5.4
 %endif
-Requires:	python3-modules >= 1:3.6
+Requires:	python3-modules >= 1:3.8
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
