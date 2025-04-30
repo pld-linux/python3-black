@@ -6,24 +6,26 @@
 Summary:	The uncompromising code formatter
 Summary(pl.UTF-8):	Bezkompromisowe narzędzie do formatowania kodu
 Name:		python3-black
-Version:	21.6b0
-Release:	7
+Version:	25.1.0
+Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/black/
 Source0:	https://files.pythonhosted.org/packages/source/b/black/black-%{version}.tar.gz
-# Source0-md5:	975b3d794b25478ef4d63f667f37b396
+# Source0-md5:	2a33335756996e5948e8063677068f24
 URL:		https://pypi.org/project/black/
+BuildRequires:	python3-build
+BuildRequires:	python3-installer
 BuildRequires:	python3-modules >= 1:3.8
-BuildRequires:	python3-setuptools
 %if %{with tests}
-BuildRequires:	python3-aiohttp >= 3.6.0
-BuildRequires:	python3-aiohttp_cors >= 0.4.0
+BuildRequires:	python3-aiohttp >= 3.10
 BuildRequires:	python3-appdirs
-BuildRequires:	python3-click >= 7.1.2
+BuildRequires:	python3-click >= 8.1.7
+BuildRequires:	python3-hatchling
+BuildRequires:	python3-hatch-fancy-pypi-readme
+BuildRequires:	python3-hatch-vcs
 BuildRequires:	python3-mypy_extensions >= 0.4.3
-BuildRequires:	python3-parameterized >= 0.7.4
-BuildRequires:	python3-pathspec >= 0.8.1
+BuildRequires:	python3-pathspec >= 0.9.0
 BuildRequires:	python3-pathspec < 1
 BuildRequires:	python3-pytest >= 6.1.1
 #BuildRequires:	python3-pytest-cases >= 2.3.0
@@ -32,7 +34,6 @@ BuildRequires:	python3-pytest-mock >= 3.3.1
 #BuildRequires:	python3-pytest-xdist >= 2.2.1
 BuildRequires:	python3-regex >= 2020.1.8
 BuildRequires:	python3-toml >= 0.10.1
-BuildRequires:	python3-typed_ast >= 1.4.2
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -75,7 +76,7 @@ Dokumentacja API modułu Black.
 %setup -q -n black-%{version}
 
 %build
-%py3_build
+%py3_build_pyproject
 
 %if %{with tests}
 # 3 tests require "black" binary in path, prepare stub
@@ -101,7 +102,7 @@ PYTHONPATH=$(pwd)/src \
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%py3_install
+%py3_install_pyproject
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -110,15 +111,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CHANGES.md LICENSE README.md
 %attr(755,root,root) %{_bindir}/black
-%attr(755,root,root) %{_bindir}/black-primer
 %attr(755,root,root) %{_bindir}/blackd
 %{py3_sitescriptdir}/black
-%{py3_sitescriptdir}/black_primer
 %{py3_sitescriptdir}/blackd
 %{py3_sitescriptdir}/blib2to3
 %{py3_sitescriptdir}/_black_version.py
 %{py3_sitescriptdir}/__pycache__/_black_version.cpython-*.py[co]
-%{py3_sitescriptdir}/black-%{version}-py*.egg-info
+%{py3_sitescriptdir}/black-%{version}.dist-info
 
 %if %{with doc}
 %files apidocs
