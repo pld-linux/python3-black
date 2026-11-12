@@ -6,13 +6,13 @@
 Summary:	The uncompromising code formatter
 Summary(pl.UTF-8):	Bezkompromisowe narzędzie do formatowania kodu
 Name:		python3-black
-Version:	26.3.0
+Version:	26.10.1
 Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/black/
 Source0:	https://files.pythonhosted.org/packages/source/b/black/black-%{version}.tar.gz
-# Source0-md5:	c01dce43efd71a7754ffd9cc3234fe89
+# Source0-md5:	0295a99652b3d95dd93a35c914023c8c
 URL:		https://pypi.org/project/black/
 BuildRequires:	python3-build
 BuildRequires:	python3-hatch-fancy-pypi-readme
@@ -20,7 +20,6 @@ BuildRequires:	python3-hatch-vcs >= 0.3.0
 BuildRequires:	python3-hatchling >= 1.27.0
 BuildRequires:	python3-installer
 BuildRequires:	python3-modules >= 1:3.10
-BuildRequires:	python3-wheel >= 0.45.1
 %if %{with tests}
 BuildRequires:	python3-aiohttp >= 3.10
 BuildRequires:	python3-click >= 8.1.7
